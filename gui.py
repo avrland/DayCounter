@@ -48,6 +48,7 @@ class Ui_MainWindow(QMainWindow):
         self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_3.setObjectName("gridLayout_3")
         self.comboBox = QtWidgets.QComboBox(self.gridLayoutWidget_3)
+        self.comboBox.setPlaceholderText("Select your date or one from listed event")
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -56,6 +57,7 @@ class Ui_MainWindow(QMainWindow):
         self.comboBox.setMinimumSize(QtCore.QSize(0, 0))
         self.comboBox.setCurrentText("")
         self.comboBox.setObjectName("comboBox")
+        self.comboBox.setEnabled(True)
         self.gridLayout_3.addWidget(self.comboBox, 1, 0, 1, 1)
         self.label_2 = QtWidgets.QLabel(self.gridLayoutWidget_3)
         font = QtGui.QFont()
@@ -126,13 +128,15 @@ class Ui_MainWindow(QMainWindow):
 
     def activateComboBox(self):
         self.comboBox.currentIndexChanged.connect(self.on_index_changed)
-        self.comboBox.addItem("Option 1")
+        self.comboBox.addItem("Your date")
         self.comboBox.addItem("Option 2")
         self.comboBox.addItem("Option 3")
-        
+
     @pyqtSlot(int)
     def on_index_changed(self,index):
         self.label.setText(self.comboBox.currentText())
+        if self.comboBox.currentText():
+            self.popup.show()
 
 class Ui_Form(QtWidgets.QWidget):
     def __init__(self):
