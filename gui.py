@@ -7,7 +7,7 @@ import traceback
 import asyncio
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QDialog
-
+from PyQt5.QtCore import pyqtSlot
 
 class Ui_MainWindow(QMainWindow):
     def __init__(self):
@@ -110,6 +110,7 @@ class Ui_MainWindow(QMainWindow):
         self.retranslateUi()
         self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(self)
+        self.activateComboBox()
 
 
     def retranslateUi(self):
@@ -122,6 +123,16 @@ class Ui_MainWindow(QMainWindow):
         self.label_3.setText(_translate("MainWindow", "Nothing interesting here (for now)"))
         self.label_4.setText(_translate("MainWindow", "TextLabel"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "About me"))
+
+    def activateComboBox(self):
+        self.comboBox.currentIndexChanged.connect(self.on_index_changed)
+        self.comboBox.addItem("Option 1")
+        self.comboBox.addItem("Option 2")
+        self.comboBox.addItem("Option 3")
+        
+    @pyqtSlot(int)
+    def on_index_changed(self,index):
+        self.label.setText(self.comboBox.currentText())
 
 class Ui_Form(QtWidgets.QWidget):
     def __init__(self):
