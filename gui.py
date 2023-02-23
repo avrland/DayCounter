@@ -132,7 +132,8 @@ class Ui_MainWindow(QMainWindow):
         self.comboBox.currentIndexChanged.connect(self.on_index_changed)
         self.comboBox.addItem("Your date")
         for i in self.backend.event_list:
-            self.comboBox.addItem(i)
+            event_date = self.backend.data.get(i,"Error")
+            self.comboBox.addItem(i + " " + event_date)
         self.comboBox.setCurrentIndex(1)
 
     @pyqtSlot(int)
@@ -140,8 +141,8 @@ class Ui_MainWindow(QMainWindow):
         if index == 0:
             self.popup.show()
         else:
-            days = str(self.backend.get_days_from_event(self.comboBox.currentText()))
-            self.label.setText( "It\'s been " + days + " days since " + self.comboBox.currentText())
+            days = str(self.backend.get_days_from_event(self.backend.event_list[index-1]))
+            self.label.setText( "It\'s been " + days + " days since " + self.backend.event_list[index-1])
 
 class Ui_Form(QtWidgets.QWidget):
     def __init__(self):
