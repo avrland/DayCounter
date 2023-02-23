@@ -8,9 +8,10 @@ import asyncio
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QDialog
 from PyQt5.QtCore import pyqtSlot
-
+from backend import Backend
 class Ui_MainWindow(QMainWindow):
     def __init__(self):
+        self.backend = Backend("event_list.json")
         super(Ui_MainWindow, self).__init__()
         self.setObjectName("Main window")
         self.resize(640, 480)
@@ -126,16 +127,18 @@ class Ui_MainWindow(QMainWindow):
         self.label_4.setText(_translate("MainWindow", "TextLabel"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "About me"))
 
+
     def activateComboBox(self):
         self.comboBox.currentIndexChanged.connect(self.on_index_changed)
         self.comboBox.addItem("Your date")
-        self.comboBox.addItem("Option 2")
-        self.comboBox.addItem("Option 3")
+        for i in self.backend.event_list:
+            self.comboBox.addItem(i)
+        self.comboBox.setCurrentIndex(1)
 
     @pyqtSlot(int)
     def on_index_changed(self,index):
         self.label.setText(self.comboBox.currentText())
-        if self.comboBox.currentText():
+        if index == 0:
             self.popup.show()
 
 class Ui_Form(QtWidgets.QWidget):
