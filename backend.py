@@ -1,4 +1,5 @@
 import pandas as pd
+from datetime import datetime
 import asyncio
 import time 
 import json
@@ -28,3 +29,10 @@ class Backend:
     def get_events_dates(self):
         for key, value in self.data.items():
             self.event_list.append(key)
+    
+    def get_days_from_event(self, key):
+        given_date_str = self.data[key]
+        given_date = datetime.strptime(given_date_str, "%d.%m.%Y")
+        current_date = datetime.now()
+        days_since_event = (current_date - given_date).days
+        return days_since_event

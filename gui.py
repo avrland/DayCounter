@@ -125,7 +125,7 @@ class Ui_MainWindow(QMainWindow):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Main window"))
         self.label_3.setText(_translate("MainWindow", "Nothing interesting here (for now)"))
         self.label_4.setText(_translate("MainWindow", "TextLabel"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "About me"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Second tab"))
 
 
     def activateComboBox(self):
@@ -137,9 +137,11 @@ class Ui_MainWindow(QMainWindow):
 
     @pyqtSlot(int)
     def on_index_changed(self,index):
-        self.label.setText( "It\'s been x days since " + self.comboBox.currentText())
         if index == 0:
             self.popup.show()
+        else:
+            days = str(self.backend.get_days_from_event(self.comboBox.currentText()))
+            self.label.setText( "It\'s been " + days + " days since " + self.comboBox.currentText())
 
 class Ui_Form(QtWidgets.QWidget):
     def __init__(self):
