@@ -89,6 +89,10 @@ class Ui_MainWindow(QMainWindow):
         self.gridLayout_5.setObjectName("gridLayout_5")
         self.graphicsView = QtWidgets.QGraphicsView(self.gridLayoutWidget_5)
         self.graphicsView.setObjectName("graphicsView")
+        self.graphicsView.setStyleSheet("border-style: none; background-color: transparent;") 
+        self.scene = QtWidgets.QGraphicsScene(self)
+        self.scene.setBackgroundBrush(QtGui.QBrush(QtCore.Qt.transparent))
+        self.graphicsView.setScene(self.scene)
         self.gridLayout_5.addWidget(self.graphicsView, 0, 0, 1, 1)
         self.gridLayoutWidget_6 = QtWidgets.QWidget(self.tab_2)
         self.gridLayoutWidget_6.setGeometry(QtCore.QRect(320, 200, 291, 191))
@@ -124,10 +128,19 @@ class Ui_MainWindow(QMainWindow):
         self.comboBox.setPlaceholderText(_translate("MainWindow", "Test"))
         self.label_2.setText(_translate("MainWindow", "Choose event (or select your date):"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Main window"))
-        self.label_3.setText(_translate("MainWindow", "Nothing interesting here (for now)"))
-        self.label_4.setText(_translate("MainWindow", "TextLabel"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Second tab"))
+        self.label_3.setFont(QtGui.QFont('Arial',20))
+        self.label_3.setText(_translate("MainWindow", "Marcin Popko"))
+        self.addAboutMe()
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "About me"))
+        # Load the PNG image and create a QPixmap from it
+        pixmap = QtGui.QPixmap("me.png")
+        pixmap_item = QtWidgets.QGraphicsPixmapItem(pixmap)
+        self.scene.addItem(pixmap_item)
 
+    def addAboutMe(self):
+        text = "Borned in 13.02.1994 \n I\'m interested in dancing, singing, coding \n crazy stuff (currently working as embedded dev)"
+        self.label_4.setFont(QtGui.QFont('Arial',8))
+        self.label_4.setText(text)
 
     def activateComboBox(self):
         self.comboBox.currentIndexChanged.connect(self.on_index_changed)
