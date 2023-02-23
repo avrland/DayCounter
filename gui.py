@@ -10,6 +10,7 @@ from PyQt5.QtWidgets import QMainWindow, QDialog
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtCore import Qt
 from backend import Backend
+from stylsheet import stylesheet, stylesheet_widget
 class Ui_MainWindow(QMainWindow):
     def __init__(self):
         self.backend = Backend()
