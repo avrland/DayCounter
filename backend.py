@@ -9,7 +9,7 @@ import subprocess
 
 class Backend:
     def __init__(self) -> None:
-        self.data = 0
+        self.data = {}
         self.event_list = []
         self.event_date_list = []
         self.read_json()
@@ -37,7 +37,7 @@ class Backend:
             self.event_list.append(key)
     
     def get_days_from_event(self, key):
-        given_date_str = self.data[key]
+        given_date_str = self.data.get(key)
         given_date = datetime.strptime(given_date_str, "%d.%m.%Y")
         current_date = datetime.now()
         days_since_event = (current_date - given_date).days
