@@ -2,27 +2,33 @@ import pandas as pd
 from datetime import datetime
 import asyncio
 import time 
+import os
 import json
 from unittest.mock import AsyncMock
 import subprocess
 
 class Backend:
-    def __init__(self, json_filepath) -> None:
+    def __init__(self) -> None:
         self.data = 0
         self.event_list = []
         self.event_date_list = []
-        self.json_filepath = json_filepath
-        self.read_json(self.json_filepath)
+        self.read_json()
         self.get_events_dates()
         pass
 
-    def read_json(self, filename):
+    def read_json(self):
         try:
-            with open(filename, "r") as json_file:
-                self.data = json.load(json_file)
-                print(self.data)
+            # Find the first JSON file in the current directory
+            for filename in os.listdir('.'):
+                if filename.endswith('.json'):
+                    with open(filename, "r") as json_file:
+                        self.data = json.load(json_file)
+                        print(self.data)
+                        return  # exit the loop after reading the first JSON file
+            # If no JSON file was found, raise a FileNotFoundError
+            raise FileNotFoundError
         except FileNotFoundError:
-            print("Test list file not found. Please check the file path and try again.")
+            print("No JSON file found in the current directory. Please check the file path and try again.")
         except json.JSONDecodeError:
             print("Error decoding JSON data in test list file. Please check the file format and try again.")
     

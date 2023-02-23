@@ -11,7 +11,7 @@ from PyQt5.QtCore import pyqtSlot
 from backend import Backend
 class Ui_MainWindow(QMainWindow):
     def __init__(self):
-        self.backend = Backend("event_list.json")
+        self.backend = Backend()
         super(Ui_MainWindow, self).__init__()
         self.setObjectName("Main window")
         self.resize(640, 480)
