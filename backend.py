@@ -13,7 +13,7 @@ class Backend:
         self.event_list = []
         self.event_date_list = []
         self.read_json()
-        self.get_events_dates()
+        self.get_events_list()
         pass
 
     def read_json(self):
@@ -32,9 +32,17 @@ class Backend:
         except json.JSONDecodeError:
             print("Error decoding JSON data in test list file. Please check the file format and try again.")
     
-    def get_events_dates(self):
+    def get_events_list(self):
+        self.event_list = []
         for key, value in self.data.items():
             self.event_list.append(key)
+
+    def return_events_list(self):
+        return self.event_list
+    
+    def get_event_date(self, key):
+        event_date = self.data.get(key,"Error")
+        return event_date
     
     def get_days_from_event(self, key):
         given_date_str = self.data.get(key)

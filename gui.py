@@ -146,8 +146,7 @@ class Ui_MainWindow(QMainWindow):
         self.comboBox.currentIndexChanged.connect(self.on_index_changed)
         self.comboBox.addItem("Your date - select from calendar")
         for i in self.backend.event_list:
-            event_date = self.backend.data.get(i,"Error")
-            self.comboBox.addItem(i + " " + event_date)
+            self.comboBox.addItem(i + " " + self.backend.get_event_date(i))
         self.comboBox.setCurrentIndex(1)
 
     @pyqtSlot(int)
@@ -156,8 +155,8 @@ class Ui_MainWindow(QMainWindow):
             self.popup.show()
             self.comboBox.setEnabled(False)
         else:
-            days = str(self.backend.get_days_from_event(self.backend.event_list[index-1]))
-            self.label.setText( "It\'s been " + days + " days since " + self.backend.event_list[index-1])
+            days = str(self.backend.get_days_from_event(self.backend.return_events_list()[index-1]))
+            self.label.setText( "It\'s been " + days + " days since " + self.backend.return_events_list()[index-1])
 
     '''
     Popup related stuff
