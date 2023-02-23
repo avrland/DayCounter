@@ -109,11 +109,11 @@ class Ui_MainWindow(QMainWindow):
         self.statusbar = QtWidgets.QStatusBar(self)
         self.statusbar.setObjectName("statusbar")
         self.setStatusBar(self.statusbar)
-        self.popup = Ui_Form()
         self.retranslateUi()
         self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(self)
         self.activateComboBox()
+        self.createPopupInstance()
 
 
     def retranslateUi(self):
@@ -130,7 +130,7 @@ class Ui_MainWindow(QMainWindow):
 
     def activateComboBox(self):
         self.comboBox.currentIndexChanged.connect(self.on_index_changed)
-        self.comboBox.addItem("Your date")
+        self.comboBox.addItem("Your date - select from calendar")
         for i in self.backend.event_list:
             event_date = self.backend.data.get(i,"Error")
             self.comboBox.addItem(i + " " + event_date)
@@ -143,6 +143,19 @@ class Ui_MainWindow(QMainWindow):
         else:
             days = str(self.backend.get_days_from_event(self.backend.event_list[index-1]))
             self.label.setText( "It\'s been " + days + " days since " + self.backend.event_list[index-1])
+
+    '''
+    Popup related stuff
+    '''
+    def createPopupInstance(self):
+        self.popup = Ui_Form()
+        self.popup.pushButton.clicked.connect(self.sendDateCloseWindow)
+    def sendDateCloseWindow(self):
+        selected_date = self.popup.calendarWidget.selectedDate()
+        selected_date_str = selected_date.toString("dd.MM.yyyy")
+        self.popup.close()
+        days = str(self.backend.get_days_from_date(selected_date_str))
+        self.label.setText( "It\'s been " + days + " days since " + selected_date_str)
 
 class Ui_Form(QtWidgets.QWidget):
     def __init__(self):

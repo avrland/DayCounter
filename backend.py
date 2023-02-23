@@ -42,3 +42,9 @@ class Backend:
         current_date = datetime.now()
         days_since_event = (current_date - given_date).days
         return days_since_event
+    
+    def get_days_from_date(self, date):
+        given_date = datetime.strptime(date, "%d.%m.%Y")
+        current_date = datetime.now()
+        days_since_event = (current_date - given_date).days
+        return days_since_event
