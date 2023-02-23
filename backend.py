@@ -8,9 +8,11 @@ import subprocess
 class Backend:
     def __init__(self, json_filepath) -> None:
         self.data = 0
+        self.event_list = []
+        self.event_date_list = []
         self.json_filepath = json_filepath
         self.read_json(self.json_filepath)
-        self.event_list = self.get_events()
+        self.get_events_dates()
         pass
 
     def read_json(self, filename):
@@ -24,8 +26,6 @@ class Backend:
         except json.JSONDecodeError:
             return "Error decoding JSON data in test list file. Please check the file format and try again."
     
-    def get_events(self):
-        events_list = []
+    def get_events_dates(self):
         for key, value in self.data.items():
-            events_list.append(key)
-        return events_list
+            self.event_list.append(key)

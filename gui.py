@@ -119,7 +119,7 @@ class Ui_MainWindow(QMainWindow):
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
         self.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "It\'s been x days since event"))
+        self.label.setText(_translate("MainWindow", "It\'s been x days since"))
         self.comboBox.setPlaceholderText(_translate("MainWindow", "Test"))
         self.label_2.setText(_translate("MainWindow", "Choose event (or select your date):"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Main window"))
@@ -137,7 +137,7 @@ class Ui_MainWindow(QMainWindow):
 
     @pyqtSlot(int)
     def on_index_changed(self,index):
-        self.label.setText(self.comboBox.currentText())
+        self.label.setText( "It\'s been x days since " + self.comboBox.currentText())
         if index == 0:
             self.popup.show()
 
