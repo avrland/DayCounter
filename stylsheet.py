@@ -55,18 +55,32 @@ QGraphicsView {
 """
 
 
-
 stylesheet_widget = """
-QWidget {
-    background-color: #1e1e1e;
-    color: #f0f0f0;
+QWidget#self {
+    background-color: #F0F0F0;
 }
 
-QLabel {
-    color: #f0f0f0;
+QCalendarWidget {
+    background-color: #F0F0F0;
 }
 
-QGraphicsView {
-    background-color: #1e1e1e;
+QCalendarWidget QAbstractItemView {
+    font-size: 18px;
+    selection-background-color: #4C4C4C;
+    selection-color: #F0F0F0;
+    background-color: #F0F0F0;
+}
+
+QPushButton {
+    background-color: #4C4C4C;
+    border: none;
+    color: #F0F0F0;
+    font-size: 24px;
+    padding: 10px;
+}
+
+QPushButton:hover {
+    background-color: #F0F0F0;
+    color: #4C4C4C;
 }
 """
