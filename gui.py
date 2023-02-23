@@ -8,6 +8,7 @@ import asyncio
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QDialog
 from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtCore import Qt
 from backend import Backend
 class Ui_MainWindow(QMainWindow):
     def __init__(self):
@@ -140,6 +141,7 @@ class Ui_MainWindow(QMainWindow):
     def on_index_changed(self,index):
         if index == 0:
             self.popup.show()
+            self.comboBox.setEnabled(False)
         else:
             days = str(self.backend.get_days_from_event(self.backend.event_list[index-1]))
             self.label.setText( "It\'s been " + days + " days since " + self.backend.event_list[index-1])
@@ -156,6 +158,7 @@ class Ui_MainWindow(QMainWindow):
         self.popup.close()
         days = str(self.backend.get_days_from_date(selected_date_str))
         self.label.setText( "It\'s been " + days + " days since " + selected_date_str)
+        self.comboBox.setEnabled(True)
 
 class Ui_Form(QtWidgets.QWidget):
     def __init__(self):
@@ -164,6 +167,7 @@ class Ui_Form(QtWidgets.QWidget):
         self.resize(640, 480)
         self.setMinimumSize(QtCore.QSize(640, 480))
         self.setMaximumSize(QtCore.QSize(640, 480))
+        self.setWindowFlag(Qt.WindowCloseButtonHint, False)
         self.gridLayoutWidget = QtWidgets.QWidget(self)
         self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 10, 621, 401))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
