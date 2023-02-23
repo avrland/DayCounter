@@ -20,11 +20,10 @@ class Backend:
             with open(filename, "r") as json_file:
                 self.data = json.load(json_file)
                 print(self.data)
-                return 0
         except FileNotFoundError:
-            return "Test list file not found. Please check the file path and try again."
+            print("Test list file not found. Please check the file path and try again.")
         except json.JSONDecodeError:
-            return "Error decoding JSON data in test list file. Please check the file format and try again."
+            print("Error decoding JSON data in test list file. Please check the file format and try again.")
     
     def get_events_dates(self):
         for key, value in self.data.items():
