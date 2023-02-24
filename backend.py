@@ -51,7 +51,10 @@ class Backend:
     
     def get_days_from_date(self, date):
         date_from_future = False
-        given_date = datetime.strptime(date, "%d.%m.%Y")
+        try:
+            given_date = datetime.strptime(date, "%d.%m.%Y")
+        except:
+            return -1, False
         current_date = datetime.now()
         days_since_event = (current_date - given_date).days
         if days_since_event < 0:

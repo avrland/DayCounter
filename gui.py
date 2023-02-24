@@ -157,10 +157,13 @@ class Ui_MainWindow(QMainWindow):
             self.comboBox.setEnabled(False)
         else:
             days, future = self.backend.get_days_from_event(self.backend.return_events_list()[index-1])
-            if not future:
-                self.label.setText( "It\'s been " + str(days) + " days since " + self.backend.return_events_list()[index-1])
+            if days == -1:
+                self.label.setText( "Wrong date format of event " + self.backend.return_events_list()[index-1])
             else:
-                self.label.setText( "There are " + str(days) + " days from the date of " + self.backend.return_events_list()[index-1])
+                if not future:
+                    self.label.setText( "It\'s been " + str(days) + " days since " + self.backend.return_events_list()[index-1])
+                else:
+                    self.label.setText( "There are " + str(days) + " days from the date of " + self.backend.return_events_list()[index-1])
 
     '''
     Popup related stuff
