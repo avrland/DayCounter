@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QMainWindow, QDialog, QTextEdit
 from PyQt5.QtCore import pyqtSlot, QDate, Qt
 from PyQt5.QtGui import QPixmap, QColor
 from backend import Backend
-from stylsheet import stylesheet, stylesheet_widget
+
 class Ui_MainWindow(QMainWindow):
     def __init__(self):
         self.backend = Backend()
