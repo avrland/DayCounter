@@ -6,11 +6,15 @@ DayCounter-pyqt is a simple desktop application built using PyQt5 framework. It'
 
 1. Clone repo
 
-'git clone https://github.com/avrland/DayCounter-pyqt.git'
+```
+git clone https://github.com/avrland/DayCounter-pyqt.git
+```
 
 2. Run it
 
-'python start.py'
+```
+python start.py
+```
 
 ## Features
 
@@ -20,8 +24,8 @@ DayCounter-pyqt is a simple desktop application built using PyQt5 framework. It'
 
 ## Json events date list
 
-I provide example list in event_list.json. Name is irrelevant, I'm simply taking first found json file from root path.
-'''json
+I provide example list in event_list.json. Name of file is irrelevant, I'm simply taking first found json file from root path.
+```json
 {
     "September 11 attacks": "11.09.2001",
     "United States invasion of Iraq": "20.03.2003",
@@ -44,7 +48,7 @@ I provide example list in event_list.json. Name is irrelevant, I'm simply taking
     "Outbreak of COVID-19 in Wuhan, China": "31.12.2019",
     "WHO declares COVID-19 a pandemic": "11.03.2020"
   }
-
+```
 ## Contributing
 
 Contributions are always welcome!
