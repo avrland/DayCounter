@@ -22,7 +22,7 @@ python start.py
 
 - window size is fixed to 640x480
 - allows you to select date manually from calender
-- reading date from json list
+- reading events dates from json list
 - can calculate dates from future and past
 - longer event names do not go beyond gui
 - immune to basic errors: wrong data format, corrupted json, no json file
