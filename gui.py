@@ -43,6 +43,7 @@ class Ui_MainWindow(QMainWindow):
         self.label.setFont(font)
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
+        self.label.setWordWrap(True)
         self.gridLayout_2.addWidget(self.label, 0, 0, 1, 1)
         self.gridLayoutWidget_3 = QtWidgets.QWidget(self.tab)
         self.gridLayoutWidget_3.setGeometry(QtCore.QRect(10, 90, 601, 181))
