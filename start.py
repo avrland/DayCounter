@@ -1,6 +1,5 @@
 import sys
 import json
-import serial
 import time
 import subprocess
 import traceback
