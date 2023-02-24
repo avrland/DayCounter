@@ -2,7 +2,9 @@
 
 ![ss1](https://github.com/avrland/DayCounter-pyqt/raw/main/graphics/ss1.png)
 
-DayCounter-pyqt is a simple desktop application built using PyQt5 framework. It's simple tool to calculate days from selected date (from future or past). There is ready to use release for Windows, however you can simply run it as a python script on any OS.
+DayCounter-pyqt is a simple desktop application built using PyQt5 framework. It's simple tool to calculate days from selected date (from future or past). There is ready to use [release for Windows](https://github.com/avrland/DayCounter-pyqt/releases/), however you can simply run it as a python script on any OS.
+
+![ss2](https://github.com/avrland/DayCounter-pyqt/raw/main/graphics/ss2.png)
 
 ## Usage
 
@@ -22,8 +24,9 @@ python start.py
 
 - window size is fixed to 640x480
 - allows you to select date manually from calender
-- reading date from json list
+- reading events dates from json list
 - can calculate dates from future and past
+- longer event names do not go beyond gui
 - immune to basic errors: wrong data format, corrupted json, no json file
 
 ## Json events date list
