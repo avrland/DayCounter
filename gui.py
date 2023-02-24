@@ -139,7 +139,7 @@ class Ui_MainWindow(QMainWindow):
         self.scene.addItem(pixmap_item)
 
     def addAboutMe(self):
-        text = "Borned in 13.02.1994 \n I\'m interested in dancing, singing, coding \n crazy stuff (currently working as embedded dev)"
+        text = "From Bialystok, Poland \n I\'m interested in dancing, singing, coding \n crazy stuff (currently working as embedded dev)"
         self.label_4.setFont(QtGui.QFont('Arial',8))
         self.label_4.setText(text)
 
