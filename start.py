@@ -18,6 +18,8 @@ class MainApp:
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
+    app_icon = QtGui.QIcon('icon.png')
+    app.setWindowIcon(app_icon)
     controller = MainApp()
     controller.ShowMainWindow()
     sys.exit(app.exec_())
