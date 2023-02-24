@@ -198,7 +198,7 @@ class Ui_Form(QtWidgets.QWidget):
         self.gridLayout.setObjectName("gridLayout")
         self.calendarWidget = QtWidgets.QCalendarWidget(self.gridLayoutWidget)
         self.calendarWidget.setObjectName("calendarWidget")
-        self.calendarWidget.setMaximumDate(QDate.currentDate())
+        #self.calendarWidget.setMaximumDate(QDate.currentDate())
         self.gridLayout.addWidget(self.calendarWidget, 0, 0, 1, 1)
         self.gridLayoutWidget_2 = QtWidgets.QWidget(self)
         self.gridLayoutWidget_2.setGeometry(QtCore.QRect(10, 420, 621, 51))
