@@ -7,7 +7,7 @@ import traceback
 import asyncio
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QDialog
-from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtCore import pyqtSlot, QDate
 from PyQt5.QtCore import Qt
 from backend import Backend
 from stylsheet import stylesheet, stylesheet_widget
@@ -195,6 +195,7 @@ class Ui_Form(QtWidgets.QWidget):
         self.gridLayout.setObjectName("gridLayout")
         self.calendarWidget = QtWidgets.QCalendarWidget(self.gridLayoutWidget)
         self.calendarWidget.setObjectName("calendarWidget")
+        self.calendarWidget.setMaximumDate(QDate.currentDate())
         self.gridLayout.addWidget(self.calendarWidget, 0, 0, 1, 1)
         self.gridLayoutWidget_2 = QtWidgets.QWidget(self)
         self.gridLayoutWidget_2.setGeometry(QtCore.QRect(10, 420, 621, 51))
