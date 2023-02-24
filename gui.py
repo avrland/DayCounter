@@ -134,7 +134,7 @@ class Ui_MainWindow(QMainWindow):
         self.addAboutMe()
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "About me"))
         # Load the PNG image and create a QPixmap from it
-        pixmap = QtGui.QPixmap("me.png")
+        pixmap = QtGui.QPixmap("graphics/me.png")
         pixmap_item = QtWidgets.QGraphicsPixmapItem(pixmap)
         self.scene.addItem(pixmap_item)
 
