@@ -20,6 +20,7 @@ python start.py
 
 ## Features
 
+- window size is fixed to 640x480
 - allows you to select date manually from calender
 - reading date from json list
 - can calculate dates from future and past
