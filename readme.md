@@ -1,9 +1,10 @@
 # DayCounter-pyqt
 
 ![ss1](https://github.com/avrland/DayCounter-pyqt/raw/main/graphics/ss1.png)
-![ss2](https://github.com/avrland/DayCounter-pyqt/raw/main/graphics/ss2.png)
 
 DayCounter-pyqt is a simple desktop application built using PyQt5 framework. It's simple tool to calculate days from selected date (from future or past). There is ready to use [release for Windows](https://github.com/avrland/DayCounter-pyqt/releases/), however you can simply run it as a python script on any OS.
+
+![ss2](https://github.com/avrland/DayCounter-pyqt/raw/main/graphics/ss2.png)
 
 ## Usage
 
