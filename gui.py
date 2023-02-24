@@ -124,7 +124,7 @@ class Ui_MainWindow(QMainWindow):
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        self.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.setWindowTitle(_translate("MainWindow", "DayCounter-pyqt"))
         self.label.setText(_translate("MainWindow", "It\'s been x days since"))
         self.comboBox.setPlaceholderText(_translate("MainWindow", "Test"))
         self.label_2.setText(_translate("MainWindow", "Choose event (or select your date):"))
@@ -156,8 +156,11 @@ class Ui_MainWindow(QMainWindow):
             self.popup.show()
             self.comboBox.setEnabled(False)
         else:
-            days = str(self.backend.get_days_from_event(self.backend.return_events_list()[index-1]))
-            self.label.setText( "It\'s been " + days + " days since " + self.backend.return_events_list()[index-1])
+            days, future = self.backend.get_days_from_event(self.backend.return_events_list()[index-1])
+            if not future:
+                self.label.setText( "It\'s been " + str(days) + " days since " + self.backend.return_events_list()[index-1])
+            else:
+                self.label.setText( "There are " + str(days) + " days from the date of " + self.backend.return_events_list()[index-1])
 
     '''
     Popup related stuff
@@ -169,8 +172,11 @@ class Ui_MainWindow(QMainWindow):
         selected_date = self.popup.calendarWidget.selectedDate()
         selected_date_str = selected_date.toString("dd.MM.yyyy")
         self.popup.close()
-        days = str(self.backend.get_days_from_date(selected_date_str))
-        self.label.setText( "It\'s been " + days + " days since " + selected_date_str)
+        days, future = self.backend.get_days_from_date(selected_date_str)
+        if not future:
+            self.label.setText( "It\'s been " + str(days) + " days since " + selected_date_str)
+        else:
+            self.label.setText( "There are " + str(days) + " days from the date of " + selected_date_str)
         self.comboBox.setEnabled(True)
 
 class Ui_Form(QtWidgets.QWidget):
@@ -205,5 +211,5 @@ class Ui_Form(QtWidgets.QWidget):
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        self.setWindowTitle(_translate("Form", "Form"))
+        self.setWindowTitle(_translate("Form", "Select date"))
         self.pushButton.setText(_translate("Form", "Accept date"))
