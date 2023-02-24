@@ -24,6 +24,7 @@ python start.py
 - allows you to select date manually from calender
 - reading date from json list
 - can calculate dates from future and past
+- longer event names do not go beyond gui
 - immune to basic errors: wrong data format, corrupted json, no json file
 
 ## Json events date list
