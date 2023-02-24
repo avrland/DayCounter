@@ -21,10 +21,11 @@ python start.py
 - allows you to select date manually from calender
 - reading date from json list
 - can calculate dates from future and past
+- immune to basic errors: wrong data format, corrupted json, no json file
 
 ## Json events date list
 
-I provide example list in event_list.json. Name of file is irrelevant, I'm simply taking first found json file from root path.
+I provide example list in event_list.json. Date is in DD/MM/YYYY format - any other will result in calculate error. Name of file is irrelevant, I'm simply taking first found json file from root path.
 ```json
 {
     "September 11 attacks": "11.09.2001",
