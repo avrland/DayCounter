@@ -6,8 +6,8 @@ import traceback
 import asyncio
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QDialog, QTextEdit
-from PyQt5.QtCore import pyqtSlot, QDate
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import pyqtSlot, QDate, Qt
+from PyQt5.QtGui import QPixmap, QColor
 from backend import Backend
 from stylsheet import stylesheet, stylesheet_widget
 class Ui_MainWindow(QMainWindow):
@@ -134,7 +134,7 @@ class Ui_MainWindow(QMainWindow):
         self.addAboutMe()
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "About me"))
         # Load the PNG image and create a QPixmap from it
-        pixmap = QtGui.QPixmap("graphics/me.png")
+        pixmap = QtGui.QPixmap("graphics/me.jpg")
         pixmap_item = QtWidgets.QGraphicsPixmapItem(pixmap)
         self.scene.addItem(pixmap_item)
 
