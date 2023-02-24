@@ -1,6 +1,6 @@
 # DayCounter-pyqt
 
-DayCounter-pyqt is a simple desktop application built using PyQt5 framework. It's simple tool to calculate day from selected day (from future or past). There are ready to use releases for Windows, however you can simply run in on rest of OS.
+DayCounter-pyqt is a simple desktop application built using PyQt5 framework. It's simple tool to calculate days from selected date (from future or past). There are ready to use releases for Windows, however you can simply run in on rest of OS.
 
 ## Usage
 
